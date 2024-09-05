@@ -37,7 +37,7 @@ const Title = styled.div`
   font-size: 32px;
   color: black;
   margin-left: 16px;
-  line-height: 40px;
+  transform: translateY(-4px);
 `;
 
 const BurgerButton = styled.div``;
