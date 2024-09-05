@@ -1,19 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { Header } from './components/header/header';
+import { SideBar } from './components/sideBar/sideBar';
 
-function App() {
+export const App = () => {
+const [showSideBar, setShowSideBar] = useState<boolean>(false)
+
   return (
-    <div className="App">
-     dsdsds
-     <ul>
-      <li>3</li>
-      <li>3</li>
-      <li>3</li>
-      <li>4</li>
-     </ul>
-    </div>
+    <>
+      <Header showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+      <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar}  />
+    </>
   );
 }
 
-export default App;
