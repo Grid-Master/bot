@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { BurgerIcon } from "../../icons/burgerIcon";
-import { CartIcon } from "../../icons/cartIcon";
+import { BurgerIcon } from "../icons/burgerIcon";
+import { CartIcon } from "../icons/cartIcon";
 
 interface IProps {
   showSideBar: boolean;

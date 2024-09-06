@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LogoIcon } from "../../icons/logoIcon";
+import { LogoIcon } from "../icons/logoIcon";
 import { MenuList } from "../menuList/menuList";
 
 interface IProps {
@@ -17,7 +17,7 @@ const tg = window.Telegram.WebApp;
           <TitleWrapper>
             <LogoIcon />
             <div>
-            <Title>{tg.initDataUnsafe?.user?.username}</Title>
+            <Title>{tg.initDataUnsafe?.user?.username || "No name"}</Title>
             <Bonuses>Бонусов: 34</Bonuses>
             </div>
           </TitleWrapper>
@@ -59,11 +59,14 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  margin-left: 12px;
+  margin-left: 6px;
   font-weight: 700;
   font-size: 24px;
   text-align: center;
   color: black;
+  max-width: 173px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Bonuses = styled.div`  
