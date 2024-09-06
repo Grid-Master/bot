@@ -8,6 +8,7 @@ interface IProps {
 }
 
 export const Header = (props: IProps) => {
+  
   const handleMenu = () => {
     props.setShowSideBar(!props.showSideBar);
   };

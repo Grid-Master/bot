@@ -8,6 +8,8 @@ interface IProps {
 }
 
 export const SideBar = (props: IProps) => {
+  //@ts-ignore
+const tg = window.Telegram.WebApp;
   return (
     <>
       <BackgroundSidebar showSideBar={props.showSideBar} onClick={() => props.setShowSideBar(false)}>
@@ -15,7 +17,7 @@ export const SideBar = (props: IProps) => {
           <TitleWrapper>
             <LogoIcon />
             <div>
-            <Title>BOGOROSH</Title>
+            <Title>{tg.initDataUnsafe?.user?.username}</Title>
             <Bonuses>Бонусов: 34</Bonuses>
             </div>
           </TitleWrapper>
