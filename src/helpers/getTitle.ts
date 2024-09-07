@@ -1,6 +1,10 @@
 export const getTitle = (path:string, title?: string) => {
+
+   const pathName = 
+
+   console.log(path.split("/"))
     
- switch(path) {
+ switch(path.split('/').at(-1)) {
     case "/main": return "Главная";
     case "/profile": return "Профиль";
     case "/history": return "История заказов";

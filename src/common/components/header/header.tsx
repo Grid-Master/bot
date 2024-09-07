@@ -1,8 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useTitle } from "../../hooks/useTitle";
 import { BurgerIcon } from "../icons/burgerIcon";
 import { CartIcon } from "../icons/cartIcon";
-import { useLocation, useNavigate } from "react-router-dom";
-import { getTitle } from "../../../helpers/getTitle";
 
 interface IProps {
   showSideBar: boolean;
@@ -11,7 +11,7 @@ interface IProps {
 
 export const Header = (props: IProps) => {
   const navigate = useNavigate();
-  const {pathname} = useLocation()
+  const {title} = useTitle()
   
   const handleMenu = () => {
     props.setShowSideBar(!props.showSideBar);
@@ -22,7 +22,7 @@ export const Header = (props: IProps) => {
       <BurgerButton onClick={handleMenu}>
         <BurgerIcon />
       </BurgerButton>
-      <Title>{getTitle(pathname)}</Title>
+      <Title>{title}</Title>
       <CartButton onClick={() => navigate("/cart")}>
         <CartIcon />
       </CartButton>

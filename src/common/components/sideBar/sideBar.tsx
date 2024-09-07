@@ -9,16 +9,23 @@ interface IProps {
 
 export const SideBar = (props: IProps) => {
   //@ts-ignore
-const tg = window.Telegram.WebApp;
+  const tg = window.Telegram.WebApp;
+
   return (
     <>
-      <BackgroundSidebar showSideBar={props.showSideBar} onClick={() => props.setShowSideBar(false)}>
-        <SideBarContainer showSideBar={props.showSideBar} onClick={(e) => e.stopPropagation()}>
+      <BackgroundSidebar
+        showSideBar={props.showSideBar}
+        onClick={() => props.setShowSideBar(false)}
+      >
+        <SideBarContainer
+          showSideBar={props.showSideBar}
+          onClick={(e) => e.stopPropagation()}
+        >
           <TitleWrapper>
             <LogoIcon />
             <div>
-            <Title>{tg.initDataUnsafe?.user?.username || "No name"}</Title>
-            <Bonuses>Бонусов: 34</Bonuses>
+              <Title>{tg.initDataUnsafe?.user?.username || "No name"}</Title>
+              <Bonuses>Бонусов: 34</Bonuses>
             </div>
           </TitleWrapper>
           <MenuList setShowSideBar={props.setShowSideBar} />
@@ -69,7 +76,7 @@ const Title = styled.div`
   text-overflow: ellipsis;
 `;
 
-const Bonuses = styled.div`  
-text-align: center;
-font-size: 16px;
+const Bonuses = styled.div`
+  text-align: center;
+  font-size: 16px;
 `;
