@@ -1,20 +1,32 @@
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 //@ts-ignore
 const tg = window.Telegram.WebApp;
 
-export const MenuList = () => {
+interface IProps {
+  setShowSideBar: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const MenuList = (props:IProps ) => {
+const navigate = useNavigate()
+
   const handleCloseApp = () => {
     tg.close();
   };
 
+  const handleNavigate = (path: string) => {
+    navigate(path)
+    props.setShowSideBar(false)
+  }
+
   return (
     <Container>
       <ItemsWrapper>
-        <Item>Главная</Item>
-        <Item>Профиль</Item>
-        <Item>История заказов</Item>
-        <Item>О бонусах</Item>
+        <Item onClick={() => handleNavigate("/main")}>Главная</Item>
+        <Item onClick={() => handleNavigate("/profile")}>Профиль</Item>
+        <Item onClick={() => handleNavigate("/history")}>История заказов</Item>
+        <Item onClick={() => handleNavigate("/bonuses")}>О бонусах</Item>
       </ItemsWrapper>
       <CloseAppButtom onClick={handleCloseApp}>Выйти</CloseAppButtom>
     </Container>

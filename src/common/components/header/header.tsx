@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { BurgerIcon } from "../icons/burgerIcon";
 import { CartIcon } from "../icons/cartIcon";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getTitle } from "../../../helpers/getTitle";
 
 interface IProps {
   showSideBar: boolean;
@@ -8,6 +10,8 @@ interface IProps {
 }
 
 export const Header = (props: IProps) => {
+  const navigate = useNavigate();
+  const {pathname} = useLocation()
   
   const handleMenu = () => {
     props.setShowSideBar(!props.showSideBar);
@@ -18,8 +22,8 @@ export const Header = (props: IProps) => {
       <BurgerButton onClick={handleMenu}>
         <BurgerIcon />
       </BurgerButton>
-      <Title>Главная</Title>
-      <CartButton>
+      <Title>{getTitle(pathname)}</Title>
+      <CartButton onClick={() => navigate("/cart")}>
         <CartIcon />
       </CartButton>
     </HeaderContainer>
@@ -35,7 +39,7 @@ const HeaderContainer = styled.div`
 
 const Title = styled.div`
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   color: black;
   margin-left: 16px;
   transform: translateY(-4px);

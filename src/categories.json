@@ -1,0 +1,32 @@
+[
+    {
+      "id": "1",
+      "name": "Пиццы",
+      "imageUrl": "",
+      "link": "pizzas"
+    },
+    {
+      "id": "2",
+      "name": "Салаты",
+      "imageUrl": "",
+      "link": "salads"
+    },
+    {
+      "id": "3",
+      "name": "Суши",
+      "imageUrl": "",
+      "link": "sushi"
+    },
+    {
+      "id": "4",
+      "name": "Соусы",
+      "imageUrl": "",
+      "link": "sauces"
+    },
+    {
+      "id": "5",
+      "name": "Десерты",
+      "imageUrl": "",
+      "link": "desserts"
+    }
+  ]

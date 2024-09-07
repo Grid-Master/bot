@@ -21,7 +21,7 @@ const tg = window.Telegram.WebApp;
             <Bonuses>Бонусов: 34</Bonuses>
             </div>
           </TitleWrapper>
-          <MenuList />
+          <MenuList setShowSideBar={props.setShowSideBar} />
         </SideBarContainer>
       </BackgroundSidebar>
     </>
