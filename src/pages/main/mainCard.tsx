@@ -2,14 +2,14 @@ import styled from "styled-components";
 import defaultImage from "../../assets/images/defaultImage.jpg"
 import { useNavigate } from "react-router-dom";
 
-export interface ICategoryCard {
+export interface IMainCard {
   id: string;
   name: string;
   imageUrl: string;
   link: string;
 }
 
-export const CategoryCard = ({ id, name, imageUrl, link }: ICategoryCard) => {
+export const MainCard = ({ id, name, imageUrl, link }: IMainCard) => {
 const navigate = useNavigate()
 
 const handleSelectCategory = () => {

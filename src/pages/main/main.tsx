@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import categoriesJson from "../../categories.json";
 import { useState } from "react";
-import { CategoryCard, ICategoryCard } from "./categoryCard";
+import { MainCard, IMainCard } from "./mainCard";
 
 export const Main = () => {
-  const [categories, setCategories] = useState<ICategoryCard[]>(categoriesJson);
+  const [items, setItems] = useState<IMainCard[]>(categoriesJson);
 
   return (
     <Container>
-      {categoriesJson.map((category) => (
-        <CategoryCard key={category.id} {...category} />
+      {items.map((category) => (
+        <MainCard key={category.id} {...category} />
       ))}
     </Container>
   );

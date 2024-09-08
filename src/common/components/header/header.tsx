@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { selectTotalPrice } from "../../../store/cart/cartSelector";
+import { useAppSelector } from "../../hooks/reduxHooks";
 import { useTitle } from "../../hooks/useTitle";
 import { BurgerIcon } from "../icons/burgerIcon";
 import { CartIcon } from "../icons/cartIcon";
@@ -11,8 +13,10 @@ interface IProps {
 
 export const Header = (props: IProps) => {
   const navigate = useNavigate();
-  const {title} = useTitle()
-  
+  const { title } = useTitle();
+
+  const cartPrice = useAppSelector(selectTotalPrice);
+
   const handleMenu = () => {
     props.setShowSideBar(!props.showSideBar);
   };
@@ -24,6 +28,7 @@ export const Header = (props: IProps) => {
       </BurgerButton>
       <Title>{title}</Title>
       <CartButton onClick={() => navigate("/cart")}>
+        {cartPrice ? <CartPrice>{cartPrice} р.</CartPrice> : null}
         <CartIcon />
       </CartButton>
     </HeaderContainer>
@@ -51,4 +56,16 @@ const CartButton = styled.div`
   display: block;
   margin-left: auto;
   margin-right: 0;
+  position: relative;
+`;
+
+const CartPrice = styled.div`
+  padding: 2px;
+  position: absolute;
+  font-size: 12px;
+  top: 5px;
+  left: -34px;
+  background-color: #ff6969;
+  border-radius: 12px;
+  color: white;
 `;
