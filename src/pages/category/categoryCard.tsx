@@ -9,13 +9,14 @@ export interface ICategoryCard {
   name: string;
   imageUrl: string;
   price: number;
+  count: number;  
 }
 
-export const CategoryCard = ({ id, name, imageUrl, price }: ICategoryCard) => {
+export const CategoryCard = ({ id, name, imageUrl, price }: Omit<ICategoryCard, "count">) => {
   const dispatch = useAppDispatch();
 
   const handleAddItemInCart = () => {
-    dispatch(addInCart({ id, name, imageUrl, price }));
+    dispatch(addInCart({ id, name, imageUrl, price, count: 1 }));
   };
 
   return (

@@ -5,7 +5,7 @@ import pizzasJson from "../../pizzas.json";
 import { CategoryCard, ICategoryCard } from "./categoryCard";
 
 export const Category = () => {
-  const [categoryItems, setCategoryItems] = useState<ICategoryCard[]>(pizzasJson);
+  const [categoryItems, setCategoryItems] = useState<Omit<ICategoryCard, "count">[]>(pizzasJson);
 
   const selectOptions = [
     { value: "all", label: "Все товары" },

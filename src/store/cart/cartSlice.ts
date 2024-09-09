@@ -8,14 +8,32 @@ export const cartSlice = createSlice({
   initialState: cartInitialState,
   reducers: {
     addInCart: (state, { payload }: PayloadAction<ICategoryCard>) => {
-      state.push(payload);
+      const findItem = state.find((obj) => obj.id === payload.id);
+
+      if (findItem) {
+        findItem.count++;
+      } else {
+        state.push({
+          ...payload,
+          count: 1,
+        });
+      }
     },
-    removeFromCart: (state, { payload }: PayloadAction<ICategoryCard>) => {
-      state.filter((item) => item.id !== payload.id);
+    minusFromCart: (state, action: PayloadAction<string>) => {
+      const findItem = state.find((obj) => obj.id === action.payload);
+      if (findItem) {
+        findItem.count--;
+      }
+    },
+    removeFromCart:(state, action: PayloadAction<string>) => {
+      const index = state.findIndex((obj) => obj.id === action.payload);
+      if (index !== -1) {
+        state.splice(index, 1); // Удаляем один элемент по индексу
+      }
     },
   },
 });
 
-export const { addInCart, removeFromCart } = cartSlice.actions;
+export const { addInCart, minusFromCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
