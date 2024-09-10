@@ -29,7 +29,7 @@ const { pathname } = useLocation();
         <Item isActive={pathname.includes("/history")} onClick={() => handleNavigate("/history")}>История заказов</Item>
         <Item isActive={pathname.includes("/bonuses")} onClick={() => handleNavigate("/bonuses")}>О бонусах</Item>
       </ItemsWrapper>
-      <CloseAppButtom onClick={handleCloseApp}>Выйти</CloseAppButtom>
+      <CloseAppButtom onClick={handleCloseApp}>Вернуться в телеграм</CloseAppButtom>
     </Container>
   );
 };

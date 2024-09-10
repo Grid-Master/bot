@@ -15,9 +15,12 @@ export const authSlice = createSlice({
     setUserPhone: (state, { payload }: PayloadAction<string>) => {
       state.authInfo.phone = payload;
     },
+    clearUserPhone: (state) => {
+      state.authInfo.phone = null;
+    },
   },
 });
 
-export const { setUserPhone } = authSlice.actions;
+export const { setUserPhone, clearUserPhone } = authSlice.actions;
 
 export default authSlice.reducer;

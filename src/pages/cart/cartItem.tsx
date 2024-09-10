@@ -24,7 +24,6 @@ export const CartItem = (props: ICategoryCard) => {
   };
 
   const handleRemove = (id: string) => {
-    console.log(id)
     dispatch(removeFromCart(id));
   };
 
