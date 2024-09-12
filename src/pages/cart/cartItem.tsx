@@ -38,7 +38,11 @@ export const CartItem = (props: ICategoryCard) => {
           <CrossIcon />
         </CrossIconContainer>
         <CountContainer>
-          <StyledButton onClick={() => handleCount("minus")}>-</StyledButton>
+          <StyledButton
+            onClick={props.count > 1 ? () => handleCount("minus") : () => null}
+          >
+            -
+          </StyledButton>
           <Count>{props.count} шт.</Count>
           <StyledButton onClick={() => handleCount("add")}>+</StyledButton>
         </CountContainer>
