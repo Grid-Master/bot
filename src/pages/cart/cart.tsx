@@ -4,10 +4,10 @@ import {
   selectCartItems,
   selectTotalPrice,
 } from "../../store/cart/cartSelector";
-import { EmptyCart } from "./emptyCart";
 import { CartItem } from "./cartItem";
 import { Button, Checkbox, Divider, Form, Input, Radio, Select } from "antd";
 import { Group } from "antd/es/radio";
+import { EmptyPage } from "../../common/components/emptyPage/emptyPage";
 
 const cityOptions = [
   { value: "Tiraspol", label: "Тирасполь" },
@@ -67,7 +67,7 @@ export const Cart = () => {
       <OrderButtom>Оформить заказ</OrderButtom>
     </Container>
   ) : (
-    <EmptyCart />
+    <EmptyPage />
   );
 };
 

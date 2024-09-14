@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { CryingFaceIcon } from "../../common/components/icons/cryingFaceIcon";
+import { CryingFaceIcon } from "../icons/cryingFaceIcon";
 
-export const EmptyCart = () => {
+export const EmptyPage = () => {
   return (
     <Container>
       <ContentWrapper>
