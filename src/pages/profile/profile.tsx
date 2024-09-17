@@ -2,13 +2,12 @@ import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../common/hooks/reduxHooks";
 import { selectAuth } from "../../store/auth/authSelectors";
 import { clearUserPhone } from "../../store/auth/authSlice";
+import { useTelegram } from "../../common/hooks/useTelegram";
 
 export const Profile = () => {
-  //@ts-ignore
-  const tg = window.Telegram.WebApp;
-
   const { authInfo } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch()
+  const {user} = useTelegram()
 
   const handleLogOut = () => {
     dispatch(clearUserPhone())
@@ -17,7 +16,7 @@ export const Profile = () => {
   return (
     <Container>
       <ProfileInfo>
-        {tg.initDataUnsafe?.user?.username || "No name"}
+        {user?.username || "No name"}
       </ProfileInfo>
       <ProfileInfo>{authInfo.phone}</ProfileInfo>
       <CloseAppButtom onClick={handleLogOut}>Выйти</CloseAppButtom>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { LogoIcon } from "../icons/logoIcon";
 import { MenuList } from "../menuList/menuList";
+import { useTelegram } from "../../hooks/useTelegram";
 
 interface IProps {
   showSideBar: boolean;
@@ -8,8 +9,7 @@ interface IProps {
 }
 
 export const SideBar = (props: IProps) => {
-  //@ts-ignore
-  const tg = window.Telegram.WebApp;
+  const {user} = useTelegram()
 
   return (
     <>
@@ -24,7 +24,7 @@ export const SideBar = (props: IProps) => {
           <TitleWrapper>
             <LogoIcon />
             <div>
-              <Title>{tg.initDataUnsafe?.user?.username || "No name"}</Title>
+              <Title>{user?.username || "No name"}</Title>
               <Bonuses>Бонусов: 34</Bonuses>
             </div>
           </TitleWrapper>

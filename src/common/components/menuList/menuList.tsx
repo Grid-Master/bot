@@ -1,35 +1,57 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useTelegram } from "../../hooks/useTelegram";
 
-//@ts-ignore
-const tg = window.Telegram.WebApp;
 
 interface IProps {
   setShowSideBar: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const MenuList = (props:IProps ) => {
-const navigate = useNavigate()
-const { pathname } = useLocation();
+export const MenuList = (props: IProps) => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const { onClose } = useTelegram();
 
   const handleCloseApp = () => {
-    tg.close();
+    onClose();
   };
 
   const handleNavigate = (path: string) => {
-    navigate(path)
-    props.setShowSideBar(false)
-  }
+    navigate(path);
+    props.setShowSideBar(false);
+  };
 
   return (
     <Container>
       <ItemsWrapper>
-        <Item isActive={pathname.includes("/main")} onClick={() => handleNavigate("/main")}>Главная</Item>
-        <Item isActive={pathname.includes("/profile")} onClick={() => handleNavigate("/profile")}>Профиль</Item>
-        <Item isActive={pathname.includes("/history")} onClick={() => handleNavigate("/history")}>История заказов</Item>
-        <Item isActive={pathname.includes("/bonuses")} onClick={() => handleNavigate("/bonuses")}>О бонусах</Item>
+        <Item
+          isActive={pathname.includes("/main")}
+          onClick={() => handleNavigate("/main")}
+        >
+          Главная
+        </Item>
+        <Item
+          isActive={pathname.includes("/profile")}
+          onClick={() => handleNavigate("/profile")}
+        >
+          Профиль
+        </Item>
+        <Item
+          isActive={pathname.includes("/history")}
+          onClick={() => handleNavigate("/history")}
+        >
+          История заказов
+        </Item>
+        <Item
+          isActive={pathname.includes("/bonuses")}
+          onClick={() => handleNavigate("/bonuses")}
+        >
+          О бонусах
+        </Item>
       </ItemsWrapper>
-      <CloseAppButtom onClick={handleCloseApp}>Вернуться в телеграм</CloseAppButtom>
+      <CloseAppButtom onClick={handleCloseApp}>
+        Вернуться в телеграм
+      </CloseAppButtom>
     </Container>
   );
 };
@@ -42,10 +64,10 @@ const Container = styled.div`
 
 const ItemsWrapper = styled.div``;
 
-const Item = styled.div<{isActive: boolean}>`
+const Item = styled.div<{ isActive: boolean }>`
   padding: 5px 10px;
   font-size: 24px;
-  background-color: ${({isActive})=> isActive ? "#ecf8f8" : "none" };
+  background-color: ${({ isActive }) => (isActive ? "#ecf8f8" : "none")};
 `;
 const CloseAppButtom = styled.div`
   margin: 0 auto;
